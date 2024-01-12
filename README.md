@@ -54,13 +54,28 @@ enablepwd=passwd
     target_label: __param_target
   - source_labels: [__param_target]
     target_label: instance
-  - target_label: __address__
-    replacement: 127.0.0.1:9465
   - source_labels: [module]
     target_label: __param_module
+  - target_label: __address__
+    replacement: 127.0.0.1:9465
 ```
 
 Example systemd unit file [here](systemd/dellos10_exporter.service)
+
+## Sample Metrics
+
+```
+dellos10_power_supply_state{powerSupply="1",state="up"} 1
+dellos10_power_supply_state{powerSupply="2",state="up"} 1
+dellos10_vlt_unit_id{role="primary"} 2
+dellos10_vlt_peer_info{role="secondary",status="up",unitId="1"} 1
+dellos10_vlt_portchannel_ports{interface="port-channel1",state="active"} 0
+dellos10_vlt_portchannel_ports{interface="port-channel1",state="inactive"} 2
+dellos10_vlt_portchannel_ports{interface="port-channel2",state="active"} 1
+dellos10_vlt_portchannel_ports{interface="port-channel2",state="inactive"} 1
+dellos10_vlt_portchannel_ports{interface="port-channel2",state="active"} 2
+dellos10_vlt_portchannel_ports{interface="port-channel2",state="inactive"} 0
+```
 
 ## License
 
