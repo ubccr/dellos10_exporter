@@ -1,0 +1,13 @@
+[Unit]
+Description=Dell OS10 exporter for Prometheus
+Documentation=https://github.com/ubccr/dellos10_exporter
+After=network.target
+
+[Service]
+Restart=always
+User=prometheus
+Group=prometheus
+ExecStart=/usr/local/bin/dellos10_exporter --config.file=/etc/prometheus/dellos10.conf
+
+[Install]
+WantedBy=multi-user.target
